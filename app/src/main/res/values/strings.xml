@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">projekt</string>
+    <string name="buttonsave">+</string>
+    <string name="Save">Save</string>
+    <string name="Cancel">Cancel</string>
+    <string name="describeEvent">Describe Event</string>
+    <string name="nameEvent">Enter name event</string>
+    <string name="head">Create new event</string>
+    <string name="godzina">Godzina:</string>
+    <string name="minuta">Minuta:</string>
+    <string name="nazwa">Nazwa:</string>
+    <string name="opis">Opis</string>
+    <string name="showbutton">Show</string>
+</resources>
