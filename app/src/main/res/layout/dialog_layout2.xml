@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:layout_gravity="center">
+
+
+    <EditText
+        android:id="@+id/Describe_text"
+        android:layout_width="281dp"
+        android:layout_height="189dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="396dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/describeEvent"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/NameEvent"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="332dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/nameEvent"
+        android:inputType="textPersonName" />
+
+    <TimePicker
+        android:id="@+id/TimerPicker"
+        android:layout_width="285dp"
+        android:layout_height="270dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="45dp"
+        android:timePickerMode="spinner" />
+
+    <ImageButton
+        android:id="@+id/CancelButton"
+        android:layout_width="103dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginBottom="51dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/Cancel"
+        android:src="@drawable/_clear_green"
+        android:text="@android:string/cancel" />
+
+    <ImageButton
+        android:id="@+id/NextButton"
+        android:layout_width="103dp"
+        android:layout_height="58dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="50dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/next"
+        android:src="@drawable/_next_green"
+        android:text="@string/next" />
+
+</RelativeLayout>
