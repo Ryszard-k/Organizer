@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">projekt</string>
+    <string name="app_name">Organizer</string>
     <string name="buttonsave">+</string>
     <string name="Save">Save</string>
     <string name="Cancel">Cancel</string>
@@ -11,4 +11,7 @@
     <string name="nazwa">Nazwa:</string>
     <string name="opis">Opis</string>
     <string name="showbutton">Show</string>
+    <string name="multiinsert">Multi </string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
 </resources>

@@ -20,7 +20,6 @@ import java.util.Calendar;
 public class MultiAdds extends Activity {
 
     private MainActivity mainActivity;
-    private getUpdateListener guListener;
     public static String name;
     public static String description;
     public static String hour;
@@ -32,7 +31,6 @@ public class MultiAdds extends Activity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.dialog_layout2);
-        this.guListener = null;
 
         final EditText NameEvent = findViewById(R.id.NameEvent);
         final EditText Description = findViewById(R.id.Describe_text);
@@ -47,9 +45,6 @@ public class MultiAdds extends Activity {
                 if(NameEvent.getText().toString().equals("")){
                     Toast.makeText(MultiAdds.this, "Incorrectly data, try again", Toast.LENGTH_SHORT).show();}
                 else {
-                  //  guListener.getinsert(NameEvent.getText().toString(), Description.getText().toString(), picker.getCurrentHour().toString(),
-                    //        picker.getCurrentMinute().toString(), picker.getCurrentHour(), picker.getCurrentMinute());
-                //   getupdatelistener.getinsert("name", "description", "12", "32", 15, 43);
 
                     name = NameEvent.getText().toString();
                     description = Description.getText().toString();
@@ -73,11 +68,4 @@ System.out.println("muliad");
         });
     }
 
-    public interface getUpdateListener{
-        void getinsert(String Name, String Description, String Hour, String Minute, int godzina, int minuta);
-    }
-
-    public void setGetUpdateListener(getUpdateListener getUpdateListener){
-        this.guListener = getUpdateListener;
-    }
 }

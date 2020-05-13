@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 
 import java.util.Calendar;
 
-public class Multiadds_date extends Activity/* implements MultiAdds.getUpdateListener*/{
+public class Multiadds_date extends Activity{
 
     private CalendarView calendar2;
     private String insertingDates;

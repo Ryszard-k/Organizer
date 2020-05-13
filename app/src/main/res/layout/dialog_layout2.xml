@@ -56,8 +56,7 @@
         android:layout_marginBottom="51dp"
         android:background="#FFFFFF"
         android:contentDescription="@string/Cancel"
-        android:src="@drawable/_clear_green"
-        android:text="@android:string/cancel" />
+        android:src="@drawable/_clear_green" />
 
     <ImageButton
         android:id="@+id/NextButton"
@@ -69,7 +68,6 @@
         android:layout_marginBottom="50dp"
         android:background="#FFFFFF"
         android:contentDescription="@string/next"
-        android:src="@drawable/_next_green"
-        android:text="@string/next" />
+        android:src="@drawable/_next_green" />
 
 </RelativeLayout>

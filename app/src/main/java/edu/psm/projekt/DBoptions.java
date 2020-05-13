@@ -12,6 +12,7 @@ public class DBoptions {
     private DBHelper dbHelper;
     private static SQLiteDatabase database;
     private static MainActivity mainActivity;
+    private static Notification notification;
 
     public DBoptions(Context context) {
         dbHelper = new DBHelper(context);
@@ -64,6 +65,13 @@ public class DBoptions {
     public static Cursor getData() {
         String where = DBHelper.Col1+"=?";
         String[] arg = {mainActivity.selectedDate};
+        return database.query(DBHelper.DB_TABLE, null, where, arg, null,
+                null, DBHelper.Col2);
+    }
+
+    public static Cursor getDataToNotification() {
+        String where = DBHelper.Col1+"=?" + " AND "+ DBHelper.Col2+"=?" + " AND " + DBHelper.Col3 + "=?";
+        String[] arg = {notification.currentDay, notification.hour, notification.minute};
         return database.query(DBHelper.DB_TABLE, null, where, arg, null,
                 null, DBHelper.Col2);
     }
