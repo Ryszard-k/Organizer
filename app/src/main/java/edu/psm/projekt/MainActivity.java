@@ -1,11 +1,14 @@
 package edu.psm.projekt;
 
+/**
+ * @author Piotr Wójcik
+ */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -22,11 +25,21 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
+
 import java.util.HashMap;
 
+/**
+ * Klasa głównej aktywności odpowiadająca za pierwszy widok okna aplikacji i jego obsługę
+ */
 public class MainActivity extends AppCompatActivity implements RVAdapter.IItemClickListener{
 
+    /**
+     * Referencje do klasy
+     * @see RVAdapter
+     * @see DBoptions
+     * oraz referencje do widgetu Calendar oraz Recycler View.
+     * Deklaracja referencji do wybieranej daty, usuwanej daty oraz obecnej daty
+     */
     private CalendarView calendar;
     public static String selectedDate;
     public static RVAdapter adapter;
@@ -35,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
     public static String deleteId;
     public static Calendar thatDay;
 
+
+    /**
+     * Metoda onCreate podpinająca layout głównego okna aplikacji, referencje do kontrolek layoutu oraz widgetów,
+     * tworzenie obiektu bazy danych oraz otwarcie jej, nadanie wartości wybieranej dacie i pobranie obecnej daty
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +71,13 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         selectedDate = String.valueOf(calendar.getDate());
         thatDay = Calendar.getInstance();
 
+        /**
+         * Interfejs odpowiedzialny za nasłuchanie zmiany daty na widgecie Calendar oraz przypisanie wartości zmienionej daty
+         * @param selectedDate
+         * oraz przypisanie obecnej daty zmiennej
+         * @param thatDay
+         * wyświetlenie danych odczytanych z bazy danych oraz uruchomienie animacji
+         */
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -65,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
             }
         });
 
+        /**
+         * Interfejs nasłuchujący przycisk odpowiedzialny za uruchomienie aktywności klasy
+         * @see ViewDialog
+         */
         addEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
             }
         });
 
+        /**
+         * Interfejs nasłuchujący przycisk odpowiedzialny za uruchomienie aktywności klasy
+         * @see MultiAdds
+         */
         multiEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
             }
         });
 
+        /**
+         * Utworzenie obiektu adaptera, nasłuchanie kliknięcia na jego obiekty oraz ustawienia widgetu Recycler View
+         * odnośnie wielkości, managera layoutu i podpięcie adaptera.
+         * Przypisanie layoutu animacji a następnie stworzenie obiektu jej i podpięcie do widgetu Recycler View
+         */
         adapter = new RVAdapter(this, dbOptions.getData());
         adapter.setClickListener(this);
         recyclerView.setHasFixedSize(true);
@@ -92,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         recyclerView.setLayoutAnimation(animation);
     }
 
+    /**
+     * Metoda odpowiedzialna za przebieg animacji
+     */
     private void runLayoutAnimation(){
         final LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation);
         recyclerView.setLayoutAnimation(controller);
@@ -99,6 +141,15 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         recyclerView.scheduleLayoutAnimation();
     }
 
+    /**
+     * Interfejs nasłuchania kliknięcia na danych obiekcie Recycler View
+     * @param view Bierzący widok
+     * @param position Pozycja klikniętego obiektu Recycler View
+     * Następnie pobranie danych z bazy danych użytych w klikniętym obiekcie Recycler View, przypisanie id któy ma posłużyć do usunięcia
+     *           danego wiersza, stworzenie Alert Dialogu w którym możemy albo usunąć dane wydarzenie, uruchomić okno edycji wydarzenia
+     * @see Update
+     * lub wyłączenia okna alertowego
+     */
     @Override
     public void onItemCLick(View view, int position) {
         HashMap<String, String> item = adapter.getItem(position);
@@ -134,6 +185,10 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         alertDialog.show();
 
     }
+
+    /**
+     * Prywatna metoda odpowiedzialna za stworzenie kanału do wyświetlania powiadomień
+     */
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

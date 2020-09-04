@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -15,13 +14,28 @@ import androidx.annotation.NonNull;
 
 import java.util.Calendar;
 
+/**
+ * Aktywność opdowiadająca za wstawienie pobranego wydarzenia z
+ * @see MultiAdds
+ * w wybrane daty przez użytkownika
+ */
 public class Multiadds_date extends Activity{
 
+    /**
+     * Referencje do klas
+     * @see MainActivity
+     * @see MultiAdds
+     * oraz referencje do widgetu Calendar View oraz zmiennej wstawianej daty
+     */
     private CalendarView calendar2;
     private String insertingDates;
     private MainActivity mainActivity;
     private MultiAdds multiAdds;
 
+    /**
+     * Metoda onCreate podpinająca layout, kontrolki z niego oraz pobranie daty z widgetu Calendar
+     * @param saveInstanceState
+     */
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.date);
@@ -29,10 +43,12 @@ public class Multiadds_date extends Activity{
         calendar2 = findViewById(R.id.calendarView2);
         ImageButton finish = findViewById(R.id.finishButton);
 
-
-
         insertingDates = String.valueOf(calendar2.getDate());
 
+        /**
+         * Interfejs nasłuchujący zmiany daty na kalendarzu. Następnie wstawia dane do bazy i uruchamia intencje do
+         * alertManagera, oblicza czas w którym ma się uruchomić alert Manager
+         */
         calendar2.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -63,6 +79,9 @@ public class Multiadds_date extends Activity{
             }
         });
 
+        /**
+         * Interfejs nasłuchujący przycisku odpowiedzialny za anulowanie operacji i zamknięcie okna
+         */
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

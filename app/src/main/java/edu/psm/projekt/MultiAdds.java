@@ -1,13 +1,10 @@
 package edu.psm.projekt;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
@@ -15,10 +12,16 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.Calendar;
-
+/**
+ * Klasa odpowiedzialna za pobranie danych do tworzenia wielu wydarzeń
+ */
 public class MultiAdds extends Activity {
 
+    /**
+     * Referencja do klasy głównej aktywności
+     * @see MainActivity
+     * oraz referencje do zmiennych nazwy wydarzenia, opisu, godziny i minuty oraz referencje typu int do godziny oraz minuty
+     */
     private MainActivity mainActivity;
     public static String name;
     public static String description;
@@ -27,6 +30,10 @@ public class MultiAdds extends Activity {
     public static int Godzin;
     public static int Minuta;
 
+    /**
+     * Metoda onCreate podpinająca layout oraz poszczególne kontrolki z niego
+     * @param saveInstanceState
+     */
 
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -38,6 +45,10 @@ public class MultiAdds extends Activity {
         final TimePicker picker = findViewById(R.id.TimerPicker);
         ImageButton CancelButton = findViewById(R.id.CancelButton);
 
+        /**
+         * Interfejs nasłuchujący przycisku sprawdzający i pobierający dane od użytkownika oraz uruchamia aktywność
+         * @see Multiadds_date
+         */
         next.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -59,7 +70,10 @@ public class MultiAdds extends Activity {
                 }
             }
         });
-System.out.println("muliad");
+
+        /**
+         * Interfejs nasłuchujący przycisku odpowiedzialny za anulowanie operacji i zamknięcie okna
+         */
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

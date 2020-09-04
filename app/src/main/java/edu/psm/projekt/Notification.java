@@ -1,28 +1,26 @@
 package edu.psm.projekt;
 
-
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Build;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 
+/**
+ * Klasa odpowiedzialna za przygotowanie powiadomienia
+ */
 public class Notification extends BroadcastReceiver {
 
+    /**
+     * Referencja do klasy
+     * @see DBoptions
+     * oraz referencje do zmiennych Cursora oraz obecnej daty, godziny oraz minuty
+     */
     private static DBoptions dbOptions;
     private Cursor nData;
     private String nEvent;
@@ -31,6 +29,9 @@ public class Notification extends BroadcastReceiver {
     public static String hour;
     public static String minute;
 
+    /**
+     * Kontruktor pobierający obecną date i czas
+     */
     public Notification(){
         currentDay = Integer.toString(Calendar.getInstance().get(Calendar.YEAR)) +
                         Integer.toString(Calendar.getInstance().get(Calendar.MONTH))+
@@ -42,6 +43,12 @@ public class Notification extends BroadcastReceiver {
         System.out.println(minute);
     }
 
+    /**
+     * Metoda onReceive służąca do zbudowania przypyomnienia i uruchomienia go z poziomu wyłączonej aplikacji
+     * @param context Obecny context
+     * @param intent Intencja w tym wypadku "wypchanie" powiadomienia
+     * Pobiera dane z bazy a następnie buduje powiadomienie
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
 

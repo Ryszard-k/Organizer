@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
@@ -14,11 +13,23 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/**
+ * Klasa aktywności odpowiedzialna za aktualizowanie wydarzeń przez użytkownika
+ */
 public class Update extends Activity {
 
+    /**
+     * Referencje do klas
+     * @see MainActivity
+     * @see DBoptions
+     */
     private MainActivity mainActivity;
     private DBoptions dbOptions;
 
+    /**
+     * Metoda onCreate podpinająca layout oraz kontrolki z niego
+     * @param saveInstanceState
+     */
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.dialog_layout);
@@ -29,6 +40,10 @@ public class Update extends Activity {
         final TimePicker picker = findViewById(R.id.TimerPicker);
         ImageButton CancelButton = findViewById(R.id.CancelButton);
 
+        /**
+         * Interfejs nasłuchujący przycisk, sprawdzająca poprawność wprowadzonych danych, zaktualizowanie danego wydarzenia
+         * oraz obliczenie czasu i uruchomienia intencji alarmManagera
+         */
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +79,9 @@ public class Update extends Activity {
             }
         });
 
+        /**
+         * Interfejs nasłuchujący przycisku odpowiedzialny za anulowanie operacji i zamknięcie okna
+         */
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

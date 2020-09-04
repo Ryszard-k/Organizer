@@ -1,19 +1,31 @@
 package edu.psm.projekt;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 
-import static edu.psm.projekt.MainActivity.selectedDate;
+/**
+ * Klasa iinicjująca i opisująca bazę danych
+ */
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    /**
+     * Zmienne opisujące
+     * @param DB_NAME  Nazwa bazy danych
+     * @param DB_TABLE Nazwa tabeli
+     * @param DB_VERSION Wersja bazy danych
+     * @param Col0 Nazwa kolumny zawierająca id
+     * @param Col1 Nazwa  kolumny zawierająca date
+     * @param Col2 Nazwa kolumny zawierająca godzine
+     * @param Col3 Nazwa kolumny zawierająca minuty
+     * @param Col4 Nazwa kolumny zawierająca nazwę wydarzenia
+     * @param Col5 Nazwa kolumny zawierająca opis wydarzenia
+     * @param Create_table Zmienna zawierająca polecenie SQL razem ze zmiennymi potrzebnymi do zainicjalizowania bazy
+     */
     private static final String DB_NAME = "DB1";
     public static final String DB_TABLE = "EventCalendar";
     private static final int DB_VERSION = 3;
@@ -28,10 +40,19 @@ public class DBHelper extends SQLiteOpenHelper {
             "(" + Col0 + " INTEGER PRIMARY KEY AUTOINCREMENT," + Col1 +
             " TEXT," +Col2 + " TEXT, " + Col3 + " TEXT," + Col4 + " TEXT," + Col5+ " TEXT" + ")";
 
+    /**
+     * Kontruktor inicjalizujący wersję bazy danych
+     * @param context Zmienna zawierająca contex klasy
+     */
+
     public DBHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    /**
+     * Metoda nadpisana onCreate inicjalizująca bazę danych
+     * @param db Zmienna wykorzystywana do zainicjalizowania bazy danych
+     */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -42,6 +63,12 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Metoda nadpisana pozwalająca na stworzenie nowej wersji bazy danych
+     * @param db Zmienna wykorzystywana do zainicjalizowania bazy danych
+     * @param oldVersion Zmienna reprezentująca id starej wersji bazy danych
+     * @param newVersion Zmienna reprezentująca id nowej wersji bazy danych
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
