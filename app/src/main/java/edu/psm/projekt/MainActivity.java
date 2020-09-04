@@ -68,8 +68,13 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         dbOptions = new DBoptions(this);
         dbOptions.open();
 
-        selectedDate = String.valueOf(calendar.getDate());
         thatDay = Calendar.getInstance();
+
+        if(selectedDate == null){
+            selectedDate = Integer.toString(Calendar.getInstance().get(Calendar.YEAR)) +
+                    Integer.toString(Calendar.getInstance().get(Calendar.MONTH)) +
+                    Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        }
 
         /**
          * Interfejs odpowiedzialny za nasłuchanie zmiany daty na widgecie Calendar oraz przypisanie wartości zmienionej daty
