@@ -31,6 +31,7 @@ public class Multiadds_date extends Activity{
     private String insertingDates;
     private MainActivity mainActivity;
     private MultiAdds multiAdds;
+    private DBoptions dbOptions;
 
     /**
      * Metoda onCreate podpinająca layout, kontrolki z niego oraz pobranie daty z widgetu Calendar
@@ -56,9 +57,11 @@ public class Multiadds_date extends Activity{
                 mainActivity.dbOptions.InsertDB(insertingDates, multiAdds.hour, multiAdds.minute, multiAdds.name, multiAdds.description);
                 Toast.makeText(Multiadds_date.this, "Event added", Toast.LENGTH_SHORT).show();
 
+                int Intent_id = (int) System.currentTimeMillis();
+
                 Intent notificationIntent = new Intent(Multiadds_date.this, Notification.class);
                 notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(Multiadds_date.this, 0, notificationIntent, 0);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(Multiadds_date.this, Intent_id, notificationIntent, PendingIntent.FLAG_ONE_SHOT);
 
                 long time = 0;
                 long currentPicker = multiAdds.Godzin *60 * 60 * 1000 + multiAdds.Minuta* 60 * 1000;
@@ -75,7 +78,6 @@ public class Multiadds_date extends Activity{
 
                 AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
                 alarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + time, pendingIntent);
-
             }
         });
 
@@ -85,6 +87,8 @@ public class Multiadds_date extends Activity{
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mainActivity.adapter.swapCursor(dbOptions.getData());
+                mainActivity.runLayoutAnimation();
                 finish();
 
             }

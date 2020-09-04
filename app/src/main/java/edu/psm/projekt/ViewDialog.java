@@ -75,6 +75,9 @@ public class ViewDialog extends Activity {
 
                     AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
                     alarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + time, pendingIntent);
+
+                    mainActivity.adapter.swapCursor(dbOptions.getData());
+                    mainActivity.runLayoutAnimation();
                     finish();
                 }
             }

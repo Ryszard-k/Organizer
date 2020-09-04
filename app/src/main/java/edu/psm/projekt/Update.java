@@ -74,6 +74,7 @@ public class Update extends Activity {
 
                     AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
                     alarm.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + time, pendingIntent);
+
                     finish();
                 }
             }
@@ -85,6 +86,8 @@ public class Update extends Activity {
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mainActivity.adapter.swapCursor(dbOptions.getData());
+                mainActivity.runLayoutAnimation();
                 finish();;
             }
         });

@@ -134,12 +134,15 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.IItemCl
         int resId = R.anim.layout_animation;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(this, resId);
         recyclerView.setLayoutAnimation(animation);
+
+        adapter.swapCursor(dbOptions.getData());
+        runLayoutAnimation();
     }
 
     /**
      * Metoda odpowiedzialna za przebieg animacji
      */
-    private void runLayoutAnimation(){
+    public void runLayoutAnimation(){
         final LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation);
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
