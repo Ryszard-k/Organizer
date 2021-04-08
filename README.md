@@ -4,9 +4,11 @@ Organizer is a simple set of views and controllers for displaying, scheduling ev
 
 # Table of contents
 
-[Images](###Images)
-[Features](###Features)
-[Compatibility](###Compatibility)
+- [Images](#Images)
+- [Features](#Features)
+- [Compatibility](#Compatibility)
+
+
 
 # Images
 
