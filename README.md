@@ -14,6 +14,12 @@ Organizer is a simple set of views and controllers for displaying, scheduling ev
 
 # Features
 
+..* Create and schedule events stored in SQLite database
+..* Manage (update, delete) planned events
+..* Create multiple events in variety days
+..* Notification from the application at a specific time of the day
+..* Open the event after clicking on the notification
+
 # Compatibility
 
 Android 8 or higher.
