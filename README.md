@@ -2,6 +2,14 @@
 
 Organizer is a simple set of views and controllers for displaying, scheduling events on Android.
 
+# Table of contents
+
+[Images](###Images)
+[Features](###Features)
+[Compatibility](###Compatibility)
+
+# Images
+
 ![image](https://user-images.githubusercontent.com/64542678/114023297-0192f000-9873-11eb-924d-e2ef59b31f0e.png)
 
 ![image](https://user-images.githubusercontent.com/64542678/114024085-ee345480-9873-11eb-8130-b0dbada42e4f.png)
@@ -14,11 +22,11 @@ Organizer is a simple set of views and controllers for displaying, scheduling ev
 
 # Features
 
-..* Create and schedule events stored in SQLite database
-..* Manage (update, delete) planned events
-..* Create multiple events in variety days
-..* Notification from the application at a specific time of the day
-..* Open the event after clicking on the notification
+* Create and schedule events stored in SQLite database
+* Manage (update, delete) planned events
+* Create multiple events in variety days
+* Notification from the application at a specific time of the day
+* Open the event after clicking on the notification
 
 # Compatibility
 
